@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package>
+  <name>turtlesim_cleaner</name>
+  <version>0.0.0</version>
+  <description>This package moves the turtle in a straight line</description>
+  
+  <maintainer email="clebercoutof@gmail.com">Cleber Couto Filho</maintainer>
+<!-- We chose bsd license because it's commonly used by ros -->
+  <license>BSD</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+<!-- declarations for the libraries used-->  
+  <build_depend>rospy</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+
+  <run_depend>rospy</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+
+<!-- STD_MESSAGES necessary declaration-->  
+  <build_depend>message_generation</build_depend>
+  <run_depend>message_runtime</run_depend> 
+
+</package>
