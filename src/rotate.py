@@ -21,7 +21,7 @@ def rotate():
     relative_angle = angle*2*PI/360
 
     #We wont use linear components
-    vel_msg.linear.x=0
+    vel_msg.linear.x=1
     vel_msg.linear.y=0
     vel_msg.linear.z=0
     vel_msg.angular.x = 0
