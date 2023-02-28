@@ -21,4 +21,8 @@ You can find all the tutorials [here](http://wiki.ros.org/turtlesim/Tutorials/Mo
   Since turtlesim is a built-in ROS Package, it already comes with the ros version. This package was developed
   using ROS KINETIC on ubuntu 16.04
 
+### Update
+  Update 2023: Small alterations allowig for execution on Ubuntu 20.04, ROS Noetic, Python 3
+
 Made by: Cleber Couto Filho, 2016, Salvador, Bahia, Brazil
+Altered by: João Alberto Fabro, 2023, Curitiba, Paraná, Brazil
