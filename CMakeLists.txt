@@ -108,5 +108,8 @@ include_directories(
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
 
+	catkin_install_python(PROGRAMS src/move.py src/rotate.py src/gotogoal.py src/cleaner.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 
