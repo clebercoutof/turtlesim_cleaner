@@ -25,4 +25,5 @@ and
   Update 2023: Small alterations allowing for execution on Ubuntu 20.04, ROS Noetic, Python 3
 
 Made by: Cleber Couto Filho, 2016, Salvador, Bahia, Brazil
+
 Altered by: João Alberto Fabro, 2023, Curitiba, Paraná, Brazil
