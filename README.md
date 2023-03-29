@@ -6,7 +6,7 @@ The goal of this work is to provide a simple python pratice as an introduction t
 ## Follow the tutorials
 You can find all the tutorials [here](http://wiki.ros.org/turtlesim/Tutorials/Moving%20in%20a%20Straight%20Line).
 
-[!here](http://wiki.ros.org/turtlesim/Tutorials/Go%20to%20Goal?action=AttachFile&do=get&target=gotogoal.png)
+![teste](http://wiki.ros.org/turtlesim/Tutorials/Go%20to%20Goal?action=AttachFile&do=get&target=gotogoal.png)
 
 ### Features
   This package contain codes related to the 3 tutorials inside the wiki, allowing the following different applications for turtlesim control:
