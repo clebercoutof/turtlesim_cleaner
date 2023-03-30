@@ -1,0 +1,6 @@
+<launch>
+<node name="turtlesim_nodeOK" pkg="turtlesim" type="turtlesim_node"/>
+<node name="cleanerOK" pkg="turtlesim_cleaner" type="cleaner.py" output="screen" />
+</launch>
+
+
