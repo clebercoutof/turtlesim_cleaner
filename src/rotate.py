@@ -6,22 +6,22 @@ PI = 3.1415926535897
 def rotate():
 
     #Starts a new node
-    rospy.init_node('robot_cleaner', anonymous=True)
+    rospy.init_node('robot_cleaner_rotate', anonymous=True)
     velocity_publisher = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
     vel_msg = Twist()
 
-    # Receiveing the user's input
+    # Receiving the user's input
     print("Let's rotate your robot")
-    speed = input("Input your speed (degrees/sec):")
-    angle = input("Type your distance (degrees):")
-    clockwise = input("Clowkise?: ") #True or false
+    speed = int(input("Input your speed (degrees/sec):"))
+    angle = int(input("Type your angle (degrees):"))
+    clockwise = int(input("Clockwise?: ")) #True(1) or False (0)
 
-    #Converting from angles to radians
+    #Converting angles from degrees to radians
     angular_speed = speed*2*PI/360
     relative_angle = angle*2*PI/360
 
     #We wont use linear components
-    vel_msg.linear.x=1
+    vel_msg.linear.x=0
     vel_msg.linear.y=0
     vel_msg.linear.z=0
     vel_msg.angular.x = 0

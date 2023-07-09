@@ -4,15 +4,15 @@ from geometry_msgs.msg import Twist
 
 def move():
     # Starts a new node
-    rospy.init_node('robot_cleaner', anonymous=True)
+    rospy.init_node('robot_cleaner_move', anonymous=True)
     velocity_publisher = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
     vel_msg = Twist()
     
-    #Receiveing the user's input
+    #Receiving the user's input
     print("Let's move your robot")
-    speed = input("Input your speed:")
-    distance = input("Type your distance:")
-    isForward = input("Foward?: ")
+    speed = int(input("Input your speed(m/s):"))
+    distance = int(input("Type your distance(m):"))
+    isForward = int(input("Foward?(1): "))
     
     #Checking if the movement is forward or backwards
     if(isForward):
@@ -49,4 +49,5 @@ if __name__ == '__main__':
     try:
         #Testing our function
         move()
-    except rospy.ROSInterruptException: pass
+    except rospy.ROSInterruptException: 
+        pass

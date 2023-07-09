@@ -8,7 +8,7 @@ class turtlebot():
 
     def __init__(self):
         #Creating our node,publisher and subscriber
-        rospy.init_node('turtlebot_controller', anonymous=True)
+        rospy.init_node('cleaner', anonymous=True)
         self.velocity_publisher = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
         self.pose_subscriber = rospy.Subscriber('/turtle1/pose', Pose, self.callback)
         self.pose = Pose()
@@ -26,11 +26,11 @@ class turtlebot():
     def get_angle_to_goal(self, goal_x, goal_y):
         return atan2(goal_y - self.pose.y, goal_x - self.pose.x)
 
-    def move2goal(self):
+    def move2goal(self, goal_x, goal_y, tolerance):
         goal_pose = Pose()
-        goal_pose.x = float(input("Set your x goal:"))
-        goal_pose.y = float(input("Set your y goal:"))
-        distance_tolerance = float(input("Set your tolerance:"))
+        goal_pose.x = goal_x
+        goal_pose.y = goal_y
+        distance_tolerance = tolerance
 
         vel_msg = Twist()
         
@@ -42,17 +42,19 @@ class turtlebot():
         
         dist = self.get_distance(goal_pose.x, goal_pose.y)
         
-        while dist >= distance_tolerance:
+        while dist >= distance_tolerance and not rospy.is_shutdown():
 
             #Proportional Controller
             #linear velocity in the x-axis:
             vel_msg.linear.x = 1.5 * dist
+            if (vel_msg.linear.x > 2.0):
+            	vel_msg.linear.x = 2.0
 
             #angular velocity in the z-axis:
             ang_to_goal = self.get_angle_to_goal(goal_pose.x, goal_pose.y)
             ang_dif = (ang_to_goal - self.pose.theta)            
             if( (ang_dif) >= (pi) ):
-                 ang_dif = (2*pi)-ang_dif
+                 ang_dif = ang_dif-(2*pi)
             if( (ang_dif) < -(pi) ):
                  ang_dif = ang_dif+(2*pi)             
             vel_msg.angular.z = 4 * (ang_dif)
@@ -62,19 +64,27 @@ class turtlebot():
             self.rate.sleep()
             
             dist = self.get_distance(goal_pose.x, goal_pose.y)
+
             
         #Stopping our robot after the movement is over
         vel_msg.linear.x = 0
         vel_msg.angular.z =0
         self.velocity_publisher.publish(vel_msg)
+        return
+   
+    def cleaner(self):
+        A = [ [1,1],[1,10], [2,10],[2,1], [3,1],[3,10], [4,10],[4,1], [5,1],[5,10], [6,10],[6,1], [7,1],[7,10], [8,10],[8,1], [9,1],[9,10], [10,10], [10,1]]
 
+        for X in A:
+                print("Position_x = ", X[0], " Position_y = ", X[1])
+                self.move2goal(X[0], X[1], 0.3)
         rospy.spin()
-
+        
 if __name__ == '__main__':
     try:
         #Testing our function
         x = turtlebot()
-        x.move2goal()
+        x.cleaner()
 
     except rospy.ROSInterruptException: 
         pass
